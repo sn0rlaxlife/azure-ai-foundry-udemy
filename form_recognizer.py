@@ -21,9 +21,10 @@ scenario = AdversarialScenario.ADVERSARIAL_QA
 simulator = AdversarialSimulator(azure_ai_project=azure_ai_project)
 # Get the Azure AI project details and API Key
 endpoint = os.environ["AZURE_OPENAI_ENDPOINT"]
-deployment = os.environ["CHAT_COMPLETIONS_DEPLOYMENT_NAME"],
+deployment = os.environ["CHAT_COMPLETIONS_DEPLOYMENT_NAME"]
 api_key = os.environ["AZURE_OPENAI_API_KEY"]
 
+# Define the function to call your endpoint -> for AzureOpenAI follow this example/pattern
 async def function_call_to_your_endpoint(query: str) -> str:
     client = AzureOpenAI(
         azure_endpoint=endpoint,
@@ -31,12 +32,12 @@ async def function_call_to_your_endpoint(query: str) -> str:
         api_key=api_key,
         api_version="2024-02-01",
     )
-
+# Call the Azure OpenAI API, the exception will return if any errors occurs ensure you have all environment variables declared (EastUS2 is supported as of 6/4/2024)
     try:
-        response = await client.chat.completions.create(model=deployment, messages=[{"role": "user", "content": query}])
-        if response.status != 200:
-            raise Exception(f"Received status {response.status} from endpoint")
-        return response.text
+        response = client.chat.completions.create(model=deployment, messages=[{"role": "user", "content": query}])
+        # Extract the generated text from the response
+        generated_text = [choice.message.content for choice in response.choices]
+        return {"generated_text": generated_text}
     except Exception as e:
         print(f"An error occurred: {e}")
         return None
@@ -69,6 +70,8 @@ async def callback(
         "stream": stream,
         "session_state": session_state
     }
+
+# Define the async function to run the simulation - this is the main function that will be called to run the simulation - its is also encouraged to use the jailbreak in a separate simulation
 async def run_simulation():
     outputs = await simulator(
         scenario=scenario,
