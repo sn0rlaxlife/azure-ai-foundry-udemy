@@ -34,7 +34,17 @@ To get started with the project, follow the steps below:
     ```shell
     pip install -r requirements.txt
     ```
+5. Declare environment variables prior to use
+   ```shell
+   $env:AZURE_OPENAI_ENDPOINT:<ENDPOINT>
+   $env:AZURE_OPENAI_KEY:<KEY>
+   $env:AZURE_OPENAI_DEPLOYMENT:<deployment-name>
+   ```
 
+6. Run the main.py
+   ```shell
+   python3 main.py
+   ```
 ## Usage
 
 The main file for use is the main.py in this folder, you can test out the use of jina with the jina.py file that takes a URL then will show you how this is leveraged for the LLM.
