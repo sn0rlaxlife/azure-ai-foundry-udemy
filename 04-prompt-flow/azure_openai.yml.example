@@ -1,1 +1,6 @@
-
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/AzureOpenAIConnection.schema.json
+name: open_ai_connection
+type: azure_open_ai
+api_key: <api_key> # do not commit this (.example) is to provide you a reference for creating this
+api_base: <base_url> # provided by Azure OpenAI
+api_type: <azure> # if using Azure OpenAI
