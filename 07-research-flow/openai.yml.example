@@ -1,0 +1,6 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/OpenAIConnection.schema.json
+name: open_ai_connection
+type: azure_open_ai # would change if using OpenAI
+api_key: <api_key> # don't commit use .gitignore
+api_base: <base_url> # grab from deployment
+api_type: azure # assuming you are using azure
