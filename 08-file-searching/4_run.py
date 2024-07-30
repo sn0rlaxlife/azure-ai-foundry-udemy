@@ -54,3 +54,11 @@ thread = client.beta.threads.create(
         }
     }
 )
+
+with client.beta.threads.runs.stream(
+    thread_id=thread.id,
+    assistant_id=assistants_id,
+    instructions="Please address the user as Security Advisor. The user has a inquiry on LLM Security specifically threats related to Generative AI in Cloud Computing.",
+    event_handler=EventHandler(),
+) as stream:
+    stream.until_done()
