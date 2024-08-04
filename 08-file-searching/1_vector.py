@@ -15,7 +15,7 @@ client = AzureOpenAI(
 vector_store = client.beta.vector_stores.create(name="security")
 
 #Ready the files we are referencing
-file_paths = ["pdf/NIST.AI.100-1.pdf", "pdf/TopThreatstoCloudComputingPandemicEleven060622.pdf"]
+file_paths = ["/pdf/nist.ai.100-1.pdf", "/pdf/AI_RMF_Playbook.pdf"]
 file_streams = [open(path, "rb") for path in file_paths]
 
 # Use the upload and poll SDK helper to upload the files, add them into our vector we've created,

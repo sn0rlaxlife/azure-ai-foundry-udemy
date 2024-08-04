@@ -46,8 +46,11 @@ class EventHandler(AssistantEventHandler):
 # with the EventHandler class to create the Run
 # and stream the response.
 
+# Add query to pass into messages for interactive conversation
+query = input('Enter your desired query: ')
+
 thread = client.beta.threads.create(
-    messages=[ {"role": "user", "content": "What are the top threats to cloud computing?"} ],
+    messages=[{"role": "user", "content": query}],
     tool_resources={
         "file_search": {
             "vector_store_ids": [vector_id],
