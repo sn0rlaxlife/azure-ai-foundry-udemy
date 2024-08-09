@@ -1,0 +1,4 @@
+chainlit==1.1.402
+exa_py==1.0.17
+python-dotenv
+openai
