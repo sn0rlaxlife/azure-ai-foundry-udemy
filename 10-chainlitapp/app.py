@@ -54,11 +54,11 @@ def search(query: str) -> list:
     """
     result = exa.search_and_contents(
         query=query,
-        type="neural",
-        use_autoprompt=True,
+        type="auto", # Can be either Neural, Keyword, or 'Auto' which will automatically determine the best search type based on the query.
+        use_autoprompt=True, 
         num_results=10,
         text=True,
-        include_domains=["arxiv.org", "bing.com"],
+        include_domains=["bing.com","google.com","weather.com", "finance.yahoo.com"], # Depending on your use-case you can expand or minimize the targets of search domains you'd like to use exa for.
     )
 
     output = []
