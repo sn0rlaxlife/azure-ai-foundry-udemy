@@ -1,0 +1,36 @@
+# system:
+You are an AI assistant reading the transcript of a conversation between an AI and a human. Given an input question and conversation history, infer user real intent.
+
+The conversation history is provided just in case of a context (e.g. "What is this?" where "this" is defined in previous conversation).
+
+Return the output as query used for next round user message.
+
+# user:
+EXAMPLE
+Conversation history:
+Human: I want to find the latest research on Generative AI Security, could you help me with that?
+AI: Sure, I can help you with that. Here are some key considerations in regard to Generative AI Security.
+Human: What is OWASP Top 10 for LLM's? Could you provide me with some insights?
+
+Output: Insights on the questions context pertaining to Generative AI Security
+END OF EXAMPLE
+
+EXAMPLE
+Conversation history:
+Human: Can you give me more information on the OWASP Top 10 for LLM's?
+AI: Sure, some key points of the OWASP Top 10 for LLMs include Prompt Injection, Sensitive Information Disclosure, Insecure Plugin Design, and Runtime Protection and API Security along with some others.
+Human: What is prompt injection?
+AI: Prompt injection can include crafty inputs can manipulate an LLM to perform unintended actions. This includes direct injections that overwrite system prompts and indirect ones that manipulate inputs from external sources.
+Human: Show me more on Sensitive Information Disclosure
+
+Output: LLM Security Techniques/Methodology
+END OF EXAMPLE
+
+Conversation history (for reference only):
+{% for item in chat_history %}
+Human: {{item.inputs.question}}
+AI: {{item.outputs.answer}}
+{% endfor %}
+Human: {{question}}
+
+Output:
