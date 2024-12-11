@@ -37,6 +37,25 @@ api_version: <api-version> # Version that is selected in the deployment model
 api_type: azure # if using azure openai
 ```
 
+# Edit the flow.dag.yaml
+The flow.dag.yaml is what is followed by the orchestrator (prompt-flow) to get your desired output for the use of the LLM since we are using Azure OpenAI this will require a parameter to change in this file in a few areas.
+```bash
+inputs:
+    deployment_name: <deployment-name> # this is your deployment of the serverless api
+    model: <gpt-3.5,gpt-4o> # example of the underlying model
+    temperature: 0.7
+    top_p: 1
+    max_tokens: 1000
+    presence_penalty: 0
+    frequency_penalty: 0
+    question: ${inputs.question}
+    chat_history: ${inputs.chat_history}
+  connection: open_ai_connection # Referenced for the openai.yml (example) of the named connection that maps to API
+  api: chat
+```
+Ensure that anywhere inside the flow.dag.yaml with this syntax matches the deployment name.
+
+
 # Establish connection once you have a file with your values (Add to .gitignore)
 ```bash
 pf flow connection create --file=openai.yml
