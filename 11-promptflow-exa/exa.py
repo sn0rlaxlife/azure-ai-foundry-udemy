@@ -1,61 +1,80 @@
 from exa_py import Exa
 from dotenv import load_dotenv
 import json
+import logging
 from promptflow.core import tool
 import os
 import sys
-from typing import Tuple, List, Dict, Any
+from typing import List, Dict, Any
 
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 # load env variables
 load_dotenv()
-exa_api_key = os.getenv("EXA_API_KEY")
 
+try: 
+    exa_api_key = os.getenv("EXA_API_KEY")
+    if not exa_api_key:
+        raise  ValueError("EXA_API_KEY is not set")
 
-# Initialize Exa Client
-exa = Exa(api_key=exa_api_key)
+    # Initialize Exa Client
+    exa = Exa(api_key=exa_api_key)
+    logger.info("Exa client initialized successfully")
+
+except Exception as e:
+    logger.error(f"Error initializing Exa client: {str(e)}")
+    raise
 
 # Define the search function
 @tool
-def search(query: str, count: int) -> Tuple[List[Dict[str, Any]], str]:
+def search(query: str, **kwargs) -> List[Dict[str, Any]]:
     """
     Perform a search using Exa SDK
 
-    @param query: Search query
-    @param count: Number of results to return
-    @return: Tuple of (list of search results, search message)
+    Args:
+      query: Search query to Exa Search
+    Returns:
+        List[Dict[str, Any]]: List of search results
     """
+    try:
+        result = exa.search_and_contents(
+            query=query,
+            type="neural",
+            use_autoprompt=True,
+            num_results=3,
+            text=True,
+            subpages=3
+        )
+        if not result or not result.results:
+            logger.warning("No search results found")
+            return [], "No search results found"
 
-    result = exa.search_and_contents(
-        query=query,
-        type="neural",
-        use_autoprompt=True,
-        num_results=5,
-        text=True,
-        include_domains=["arxiv.org","bing.com","google.com"]
-    )
-    output = []
-
-    for i, item in enumerate(result.results):
-        output.append({
-            "title": item.title,
-            "summary": item.text,
-            "entity_id": item.url
-        })
-
-    # Ensure output is a list
-    if not isinstance(output, list):
-        output = list(output) if hasattr(output, '__iter__') else [output]
-
-    return output, f"Searching for: {query}"
+        output = [{
+                "title": item.title,
+                "summary": item.text,
+                "entity_id": item.url
+        } for item in result.results]
+        # Logging for completion of the query
+        logger.info(f"Search completed for query: {query}")
+        return output
+    except Exception as e:
+        logger.error(f"Error performing search: {e}")
+        return []
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Usage: python search.py <query> <count")
+    if len(sys.argv) != 2:
+        print("Usage: python search.py <query>")
         sys.exit(1)
-    entity = sys.argv[1]
-    count = int(sys.argv[2])
-
-    search_results, search_message = search(entity, count)
-    print(search_message)
-    print(json.dumps(search_results, indent=4))
+    try:
+        query = sys.argv[1]
+        results = search(query)
+        print(json.dumps(results, indent=4))
+    except Exception as e:
+        logger.error(f"Unexpected error: {str(e)}")
+        sys.exit(1)
