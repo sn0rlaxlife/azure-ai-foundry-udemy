@@ -1,6 +1,11 @@
 ## Promptflow with Exa.ai API ##
 This is to demonstrate the use of a powerful search engine "Exa" and following a pattern flow via code using prompt-flow as the orchestrator.
 
+
+## Architecture ##
+To assist you with the visual aspect of the DAG (Directed Acyclic Graph) flow of how this code works from start to finish.
+<img src='https://github.com/sn0rlaxlife/azure-ai-foundry-udemy/blob/main/11-promptflow-exa/prompt-flow-exa.png'></img>
+
 # Installation
 
 To install this Python package, follow these steps:
