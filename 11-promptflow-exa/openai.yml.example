@@ -1,0 +1,8 @@
+## Example
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/OpenAIConnection.schema.json
+name: open_ai_connection
+type: azure_open_ai # Assuming your using AzureOpenAI
+api_key: <your-key> # Don't commit you can pass this via the cli as well
+api_base: <service-url> #API from the instance base url
+api_version: <version-date> # important to match your endpoint/deployment
+api_type: azure # If you are using azure
