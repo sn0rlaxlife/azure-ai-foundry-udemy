@@ -1,0 +1,8 @@
+# Ignore Python environment variables
+.env
+
+# Ignore __pycache__ directories
+__pycache__/
+
+# Ignore env
+red/

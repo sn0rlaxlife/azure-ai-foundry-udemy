@@ -1,0 +1,17 @@
+
+# Ignore python
+.env
+.env*
+
+
+# Ignore yaml
+.yml
+
+# Ignore promptflow
+.promptflow/
+
+# Ignore red env
+red/
+
+# Ignore __pycache__ directories
+__pycache__/

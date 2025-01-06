@@ -9,6 +9,9 @@ __pycache__/
 # YAML
 openai.yml
 
+# Ignore any promptflow associated files
+.promptflow/
+flow/
 
 # Distribution / packaging
 .Python

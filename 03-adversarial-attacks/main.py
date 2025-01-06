@@ -77,7 +77,7 @@ async def run_simulation():
         target=callback,
         max_conversation_turns=1,
         max_simulation_results=3,
-        jailbreak=False
+        jailbreak=True
     )
     return outputs
 # Outside of the async function

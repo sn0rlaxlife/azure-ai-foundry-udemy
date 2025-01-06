@@ -6,6 +6,12 @@ __pycache__/
 # C extensions
 *.so
 
+# Env file
+.venv/
+Include/
+Lib/
+Scripts/
+
 # Distribution / packaging
 dist/
 build/
@@ -17,3 +23,6 @@ venv/
 env/
 .env
 .conf
+
+# Ignore cfg
+pyvenv.cfg

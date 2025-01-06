@@ -6,11 +6,15 @@ __pycache__/
 # C extensions
 *.so
 
+
+
 # YML
 azure_openai.yml
 
 # Virtual Environment
-/redteam*
+.redteam/
+.promptflow/
+redteam/
 
 
 # Distribution / packaging

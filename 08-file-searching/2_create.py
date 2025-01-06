@@ -23,7 +23,7 @@ assistant = client.beta.assistants.create(
     f"You're tasked with providing guidance on how to secure AI models and data. You can ask questions to get started."
     f"You're well versed in the OWASP Top 10 LLM, and can provide guidance on how to secure AI models and data."
     f"You can code if needed to provide guidance on how to secure AI models and data.",
-    model="filesearcher", # replace with model deployment name. 
+    model=deployment_name, # replace with model deployment name. 
     tools=[{"type":"file_search"}],
     )
 

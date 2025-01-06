@@ -7,6 +7,7 @@ import json
 # Replace <your-deployment-name> with the name of your DALL-E 3 deployment
 deployment = os.environ["DALLE3_DEPLOYMENT"]
 
+# Initiate the client to access Azure OpenAI
 client = AzureOpenAI(
     api_version="2024-02-01",
     azure_endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
@@ -24,7 +25,7 @@ if not prompt:
 result = client.images.generate(
     model=deployment, # the name of your DALL-E 3 deployment
     prompt=prompt,
-    n=1
+    n=3, # number of images to generate
 )
 
 image_url = json.loads(result.model_dump_json())['data'][0]['url']
