@@ -63,7 +63,7 @@ Ensure that anywhere inside the flow.dag.yaml with this syntax matches the deplo
 
 # Establish connection once you have a file with your values (Add to .gitignore)
 ```bash
-pf flow connection create --file=openai.yml
+pf connection create --file=openai.yml
 ```
 
 # Start the flow

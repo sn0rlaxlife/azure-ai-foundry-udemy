@@ -5,7 +5,7 @@
 
 
 # Ignore yaml
-.yml
+openai.yml
 
 # Ignore promptflow
 .promptflow/
