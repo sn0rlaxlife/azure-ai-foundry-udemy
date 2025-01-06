@@ -8,3 +8,8 @@ Use the jupyter notebook with the directions inside the file.
 * Azure AI Search Service (Free SKU) 
 
 Once these are deployed use the .env.example to reference for a .env (leverage .gitignore)
+
+## Architecture of this lab ##
+<img src="https://github.com/sn0rlaxlife/azure-ai-foundry-udemy/blob/main/12-llama-index-azure-ai/Screenshot%202025-01-06%20153435.png"></img>
+
+
