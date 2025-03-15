@@ -1,4 +1,4 @@
 promptflow==1.16.2
 exa-py==1.7.0
-promptflow-core==1.16.2
+promptflow-core==1.17.2
 promptflow-tools==1.6.0
