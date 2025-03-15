@@ -20,7 +20,12 @@ To use a `.env` file and ensure that sensitive information is not committed to v
 
 That's it! You're now ready to use the Python package and manage your environment variables securely.
 
-# Working with this in Azure AI Studio
+# Working with this in Azure AI Foundry #
+
+## Updates from March 2025 ##
+- Evaluations Lab is shown in course this will evolve with Automation of Evaluations
+- Added DeepSeek R1 using LangChain + Exa AI this is housed in /14-azure-ai-inference
+- In-progress (Agents in Azure Foundry via SDK)
 
 This assumes you have deployed the Azure AI Studio + Workspace (Project) in a supported region East US 2 (US) see reference.
 https://learn.microsoft.com/en-us/azure/ai-studio/how-to/develop/simulator-interaction-data
