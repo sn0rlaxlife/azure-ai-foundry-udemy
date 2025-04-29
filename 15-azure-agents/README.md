@@ -26,7 +26,12 @@ Step 3 - Install requirements
 pip install -r requirements.txt
 ```
 
-Step 4 - Run the agent.py once you have .env populated with the following variables
+Step 4 - Login to azure to authenticate token from project
+```bash
+az login --use-device-code
+```
+
+Step 5 - Run the agent.py once you have .env populated with the following variables
 ```bash
 AZURE_AI_AGENT_PROJECT_CONNECTION_STRING='<Connection-string>'
 AZURE_AI_AGENT_MODEL_DEPLOYMENT_NAME='<deployment-name>'
@@ -37,3 +42,7 @@ BING_SEARCH_SUBSCRIPTION_KEY='<bing-key>'
 BING_SEARCH_URL="<bing-url>"
 ```
 
+Then run
+```bash
+python3 agent.py
+```
