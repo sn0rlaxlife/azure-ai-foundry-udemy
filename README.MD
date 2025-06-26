@@ -27,7 +27,12 @@ That's it! You're now ready to use the Python package and manage your environmen
 - Added DeepSeek R1 using LangChain + Exa AI this is housed in /14-azure-ai-inference
 - In-progress (Agents in Azure Foundry via SDK)
 
-This assumes you have deployed the Azure AI Studio + Workspace (Project) in a supported region East US 2 (US) see reference.
+## Updates planned for Summer 2025 ##
+- Distillation
+- Response API Updates
+- Automated Red Team Agent (Evaluation of Application using PyRiT)
+
+This assumes you have deployed the Azure AI Foundry + Workspace (Project) in a supported region East US 2 (US) see reference.
 https://learn.microsoft.com/en-us/azure/ai-studio/how-to/develop/simulator-interaction-data
 
 Once you've used environment variables for the items in the script the modification is located on lines 77-85
