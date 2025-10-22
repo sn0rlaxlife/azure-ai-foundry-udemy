@@ -11,3 +11,5 @@
 /tests/*
 !tests/.gitkeep
 
+# Environments
+.venv/
