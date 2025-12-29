@@ -1,6 +1,6 @@
 azure-ai-inference==1.0.0b9
 azure-identity==1.20.0
-langchain-core==0.3.43
+langchain-core==0.3.81
 langchain-azure-ai==0.1.2
 langchain-community==0.3.27
 exa-py==1.8.9
