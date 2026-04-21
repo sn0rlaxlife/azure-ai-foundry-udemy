@@ -4,4 +4,4 @@ langchain-core==1.2.11
 langchain-azure-ai==0.1.2
 langchain-community==0.3.27
 exa-py==1.8.9
-python-dotenv==1.0.1
+python-dotenv==1.2.2
